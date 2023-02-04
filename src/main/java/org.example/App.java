@@ -21,6 +21,7 @@ public class App {
         ));
 
          */
+        /*
         Pokemon monPokemon = new Pokemon("Tortank", new ArrayList<Capacite>(), 100, false, "combatif");
         System.out.println(monPokemon);
 
@@ -30,5 +31,44 @@ public class App {
         for (String i : ctCapacite.keySet()){
             System.out.println ("La ct " + i + " contient : " + ctCapacite.get(i));
         }
+         * 
+         */
+        
+         int saisie = 0;
+        while (saisie != 4) {
+            System.out.println("Que souhaitez-vous faire ? ");
+            System.out.println("1: Capturez un Pokemon ");
+            System.out.println("2: Attendre ");
+            System.out.println("3: Afficher les Pokemon ");
+            System.out.println("4: Quitter ");
+            Scanner sc = new Scanner(System.in);
+            try {
+                    saisie = sc.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Vous n'avez pas saisie un numéro ! Retour au menu !");
+                } catch (Exception e){
+                    System.out.println("Exception non connue");
+            }
+
+            Pokemon monPokemon = null;
+            switch (saisie) {
+                case 1 :
+                    monPokemon = new Pokemon();
+                    monDresseur.capturerPokemon(monPokemon);
+                    pokemonDao.addPokemon(monPokemon);
+                    break;
+                case 2:
+                    continue;
+                case 3:
+                    System.out.println(pokemonDao.getAllPokemon());
+                    break;
+                case 4:
+                    System.out.println("Merci de votre choix");
+                    break;
+                default:
+                    System.out.println("Choix invalide, veuillez recommencer");
+            }
+        }
+
     }
 }
